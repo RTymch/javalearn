@@ -22,6 +22,12 @@ import java.util.Scanner;
 
 public class Main {
     
+    int vvid;
+    int inp;
+    int balance =100;
+    
+    
+    // вивід головного меню
     public void mainMenu(){
     System.out.println("Програма \"Банкомат\"");
   	System.out.println("Зробіть вибір, натиснувши відповідну цифру");
@@ -30,28 +36,59 @@ public class Main {
 	System.out.println("Змінити пінкод - 3");
     }
     
-   int input(){
+    
+    //ввід
+ public  int input(){
         Scanner myVar = new Scanner(System.in);
-               int vvid = myVar.nextInt();
+               vvid = myVar.nextInt();
   System.out.println("Ви вибрали: " + vvid);
         return vvid;
     }
     
-    public static void main(String[] args) {
-	int balance =100;
-       Main m= new Main();
-        m.mainMenu();
-       int in=m.input();
-        
-        if(in==1){
+    
+    //обробка вводу
+    
+    void actions2(){
+        switch (vvid){
+            case 1:
+                System.out.println("Баланс рахунку : " + balance);
+       }
+    }
+    /*
+ void actions (vvid, balance){
+          if (vvid==1) {
             System.out.println("Баланс рахунку : " + balance);
         }
-          System.out.println(" ");     
+        else{
+            System.out.println("Баланс  : " + balance);
+        }
+    }
+    */
+    
+    
+    
+    
+    //повтор циклу чи вихід
+    /*
+  public void repeet(){
+        System.out.println(" ");     
         System.out.println("Повернутися до вибору? - Натисніть 1");
         Scanner myVar2= new Scanner(System.in);
                int vvid2= myVar2.nextInt();
         if(vvid2==1){
             m.mainMenu();
-        }
+    }
+    }
+    */
+    
+    public static void main(String[] args) {
+	
+       Main m= new Main();
+        m.mainMenu();
+       m.input();
+      //  m.actions();
+    m.actions2();
+          
+        
 	}
 }
