@@ -21,10 +21,23 @@ import java.util.Scanner;
 */
 
 public class Main {
-    
+    int pin;
+   int pincode=1111;
+ int minus;
+   // int zniaty;
     int vvid;
     int inp;
     int balance =100;
+    
+    
+    // Перевірка пінкоду
+    void checkpin(){
+        while (pin!=pincode){
+        System.out.println("Введіть пінкод");
+        Scanner chek = new Scanner(System.in);
+        pin=chek.nextInt();
+        }
+    }
     
     
     // вивід головного меню
@@ -52,20 +65,18 @@ public class Main {
         switch (vvid){
             case 1:
                 System.out.println("Баланс рахунку : " + balance);
-       }
+                break;
+     case 2:
+               System.out.println("Скільки ви хочете зняти?");
+              Scanner zniaty= new Scanner(System.in);
+                minus=zniaty.nextInt();
+                System.out.println("Знято: " + minus);
+    balance -= minus;
+                System.out.println("Залишок: " + balance);
+                case 3:
+            }
     }
-    /*
- void actions (vvid, balance){
-          if (vvid==1) {
-            System.out.println("Баланс рахунку : " + balance);
-        }
-        else{
-            System.out.println("Баланс  : " + balance);
-        }
-    }
-    */
-    
-    
+   
     
     
     //повтор циклу чи вихід
@@ -84,6 +95,7 @@ public class Main {
     public static void main(String[] args) {
 	
        Main m= new Main();
+        m.checkpin();
         m.mainMenu();
        m.input();
       //  m.actions();
