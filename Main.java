@@ -1,8 +1,10 @@
 package com.javalearning;
 import java.util.Scanner;
 /*
+ * кілька користувачів
+ * 
 програма банкомат
-ідеетифікація клієнта
+ідентифікація клієнта
 меню терміналу
 обробка вводу користувача
 виконання
@@ -16,18 +18,25 @@ import java.util.Scanner;
 кредит
 комісія за обслуговування
 зміна пінкоду
+ловити помилки вводу
+обмежити спроби
+записувати баланс і пінкод в файл
+і потім читати з нього 
 
 
 */
 
 public class Main {
+    int pincodeSc;
+    int again=1;
     int pin;
    int pincode=1111;
  int minus;
-   // int zniaty;
+   
     int vvid;
     int inp;
     int balance =100;
+    int rep;
     
     
     // Перевірка пінкоду
@@ -42,6 +51,7 @@ public class Main {
     
     // вивід головного меню
     public void mainMenu(){
+        System.out.println(" ");    
     System.out.println("Програма \"Банкомат\"");
   	System.out.println("Зробіть вибір, натиснувши відповідну цифру");
 	System.out.println("Перевірити баланс рахунку - 1");
@@ -74,33 +84,42 @@ public class Main {
     balance -= minus;
                 System.out.println("Залишок: " + balance);
                 case 3:
+                System.out.println(" ");    
+                System.out.println("Введіть новий пінкод");
+				Scanner newPinSc=new Scanner(System.in);
+               pincodeSc=newPinSc.nextInt();
+                pincode=pincodeSc;
+                System.out.println("Ви успішно змінили пінкод");
             }
     }
    
     
     
     //повтор циклу чи вихід
-    /*
-  public void repeet(){
+   
+  public void repeat(){
         System.out.println(" ");     
-        System.out.println("Повернутися до вибору? - Натисніть 1");
-        Scanner myVar2= new Scanner(System.in);
-               int vvid2= myVar2.nextInt();
-        if(vvid2==1){
-            m.mainMenu();
+        System.out.println("Повернутися до головного меню? - Натисніть 1");
+            System.out.println("Вийти - Натисніть 0");        Scanner repetition= new Scanner(System.in);
+             rep = repetition.nextInt();
+        again=rep;
+        System.out.println(" ");    
+        System.out.println("До побачення!");
+       
     }
-    }
-    */
+   
     
     public static void main(String[] args) {
 	
        Main m= new Main();
         m.checkpin();
+        while (m.again ==1){
         m.mainMenu();
        m.input();
       //  m.actions();
     m.actions2();
-          
+        m.repeat();
+        }
         
 	}
 }
