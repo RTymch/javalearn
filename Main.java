@@ -1,7 +1,7 @@
 package com.javalearning;
 import java.util.Scanner;
 /*
- * кілька користувачів
+ *
  *
 програма банкомат
 
@@ -13,9 +13,7 @@ public class Main {
     int pin;
     int pincode=1111;
     int minus;
-
     int vvid;
-    int inp;
     int balance =100;
     int rep;
 
@@ -41,7 +39,7 @@ public class Main {
     }
 
 
-    //ввід
+    //вибір пункту меню
     public  int input(){
         Scanner myVar = new Scanner(System.in);
         vvid = myVar.nextInt();
@@ -61,7 +59,10 @@ public class Main {
                 System.out.println("Скільки ви хочете зняти?");
                 Scanner zniaty= new Scanner(System.in);
                 minus=zniaty.nextInt();
-                System.out.println("Знято: " + minus);
+                if (balance-minus<0){ //перевірка чи достатньо коштів
+                    System.out.println("На рахунку бракує коштів");
+                    balance+=minus; // повертає суму на рахунок
+                }
                 balance -= minus;
                 System.out.println("Залишок: " + balance);
                 break;
@@ -92,7 +93,7 @@ public class Main {
 
     }
 
-
+       // виконання
     public static void main(String[] args) {
 
         Main m= new Main();
@@ -100,9 +101,9 @@ public class Main {
         while (m.again ==1){
             m.mainMenu();
             m.input();
-            //  m.actions();
             m.actions2();
             m.repeat();
+            
         }
 
     }
