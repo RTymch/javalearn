@@ -1,4 +1,4 @@
-package com.javalearning;
+package com.company;
 import java.util.Scanner;
 /*
  * кілька користувачів
@@ -8,102 +8,55 @@ import java.util.Scanner;
 */
 
 public class Main {
-    int pincodeSc;
-    int again=1;
-    int pin;
-    int pincode=1111;
-    int minus;
-
-    int vvid;
-    int inp;
-    int balance =100;
-    int rep;
-
-
-    // Перевірка пінкоду
-    void checkpin(){
-        while (pin!=pincode){
-            System.out.println("Введіть пінкод");
-            Scanner chek = new Scanner(System.in);
-            pin=chek.nextInt();
-        }
-    }
-
-
-    // вивід головного меню
-    public void mainMenu(){
-        System.out.println(" ");
-        System.out.println("Програма \"Банкомат\"");
-        System.out.println("Зробіть вибір, натиснувши відповідну цифру");
-        System.out.println("Перевірити баланс рахунку - 1");
-        System.out.println("Зняти гроші - 2");
-        System.out.println("Змінити пінкод - 3");
-    }
-
-
-    //ввід
-    public  int input(){
-        Scanner myVar = new Scanner(System.in);
-        vvid = myVar.nextInt();
-        System.out.println("Ви вибрали: " + vvid);
-        return vvid;
-    }
-
-
-    //обробка вводу
-
-    void actions2(){
-        switch (vvid){
-            case 1:
-                System.out.println("Баланс рахунку : " + balance);
-                break;
-            case 2:
-                System.out.println("Скільки ви хочете зняти?");
-                Scanner zniaty= new Scanner(System.in);
-                minus=zniaty.nextInt();
-                System.out.println("Знято: " + minus);
-                balance -= minus;
-                System.out.println("Залишок: " + balance);
-                break;
-            case 3:
-                System.out.println(" ");
-                System.out.println("Введіть новий пінкод");
-                Scanner newPinSc=new Scanner(System.in);
-                pincodeSc=newPinSc.nextInt();
-                pincode=pincodeSc;
-                System.out.println("Ви успішно змінили пінкод");
-                break;
-        }
-    }
-
-
-
-    //повтор циклу чи вихід
-
-    public void repeat(){
-        System.out.println(" ");
-        System.out.println("Повернутися до головного меню? - Натисніть 1");
-        System.out.println("Вийти - Натисніть 0");
-        Scanner repetition= new Scanner(System.in);
-        rep = repetition.nextInt();
-        again=rep;
-        System.out.println(" ");
-        System.out.println("До побачення!");
-
-    }
-
-
     public static void main(String[] args) {
 
-        Main m= new Main();
-        m.checkpin();
-        while (m.again ==1){
-            m.mainMenu();
-            m.input();
-            //  m.actions();
-            m.actions2();
-            m.repeat();
+        String name = "noname", surname, balance;
+        System.out.println("Модель Банкомату");
+        System.out.println(" ");
+        Scanner S = new Scanner(System.in);
+        String pin;
+
+
+// check pincode
+
+
+        //Array of data
+        String[][] user = {{"1111", "Roman", "Tymchyshyn","100000$"},
+                {"0000", "Sylvester", "Stallone","56000$"},
+                {"007", "James", "Bond","*******"}};
+
+
+
+
+
+
+            while(name.equals("noname") ){
+                System.out.print("Enter pincode : ");
+                pin = S.nextLine();
+                for (int i = 0; i < 3; i++) {     // how can i make this with "length"?
+                    int j=0;
+                        if (pin.equals(user[i][j])) {//if pin is right, set new name, surname and balance
+                            name = user[i][1];
+                            surname = user[i][2];
+                            balance = user[i][3];
+                            System.out.println("Hello, " + name + " " + surname+"!");
+                            System.out.println("The balance is: " + balance);
+                            break;
+
+
+                    }
+                }//check wrong or not and write message
+                if (name.equals("noname")){
+                    System.out.println("Wrong pin!");
+                    System.out.println(" ");
+                }
+
+                }
+
+
         }
 
-    }
 }
+
+
+
